@@ -13,7 +13,7 @@
                 </div>
             <?php endif; ?>
 
-            <?= $this->session->flashdata('message'); ?>
+            <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRoleMenuModal">Tambah</a>
 
@@ -53,8 +53,8 @@
                                         <td><?= $sp['pembimbing_1']; ?></td>
                                         <td><?= $sp['pembimbing_2']; ?></td>
                                         <td align="center">
-                                            <a href="#" class="badge badge-success">edit</a>
-                                            <a href="#" class="badge badge-danger">hapus</a>
+                                            <a href="" class="badge badge-success edit">edit</a>
+                                            <a href="<?= base_url('admin/hapusdata/') ?><?= $sp['id']; ?>" class="badge badge-danger hapus">hapus</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

@@ -30,6 +30,11 @@ class Admin_model extends CI_Model
         return count($this->db->get('data_skripsi')->result_array());
     }
 
+    public function HapusData($id)
+    {
+        $this->db->delete('data_skripsi', ['id' => $id]);
+    }
+
     public function InputData()
     {
         $data = [

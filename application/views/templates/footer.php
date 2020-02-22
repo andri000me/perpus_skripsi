@@ -55,6 +55,12 @@
       <!-- Page level custom scripts -->
       <script src="<?= base_url('assets/') ?>js/demo/datatables-demo.js"></script>
 
+      <!-- Import  SweetAlerts -->
+      <script src="<?= base_url('assets/') ?>js/sweetalert2.all.min.js"></script>
+
+      <!-- script untuk SweetAlert -->
+      <script src="<?= base_url('assets/') ?>js/script.js"></script>
+
       <script>
           //   jquery untuk manipulasi input gambar
           $('.custom-file-input').on('change', function() {

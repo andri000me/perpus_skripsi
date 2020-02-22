@@ -101,7 +101,7 @@ class Admin extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->Admin_model->InputData();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data <strong> berhasil </strong> ditambahkan!</div>');
+            $this->session->set_flashdata('message', '<b>Ditambahkan!</b>');
             redirect('admin/skripsi_psik');
         }
     }
@@ -131,7 +131,22 @@ class Admin extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->Admin_model->InputData();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data <strong> berhasil </strong> ditambahkan!</div>');
+            $this->session->set_flashdata('message', ' <b> ditambahkan! </b>');
+            redirect('admin/skripsi_kesmas');
+        }
+    }
+
+    public function HapusData($id)
+    {
+        // cek data yang dihapus
+        $data = $this->db->get_where('data_skripsi', ['id' => $id])->row_array();
+        if ($data['prodi'] == 'PSIK') {
+            $this->Admin_model->HapusData($id);
+            $this->session->set_flashdata('message', '<strong>dihapus! </strong>');
+            redirect('admin/skripsi_psik');
+        } else {
+            $this->Admin_model->HapusData($id);
+            $this->session->set_flashdata('message', '<strong>dihapus! </strong>');
             redirect('admin/skripsi_kesmas');
         }
     }
