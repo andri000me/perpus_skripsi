@@ -158,7 +158,7 @@ class Admin extends CI_Controller
         $data['nama'] = $this->Admin_model->GetDataNama();
         $data['judul'] = $this->Admin_model->GetDataJudul();
         $this->load->view('admin/cetak-label', $data);
-        $this->Admin_model->UpdateStatusCetak();
+        // $this->Admin_model->UpdateStatusCetak();
     }
 
     public function SkripsiLabel()
