@@ -17,6 +17,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Semua SKripsi</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_keseluruhan; ?></div>
+                                    <a href="" class="badge badge-primary">Lihat</a>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,6 +35,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Skripsi PSIK</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlah_psik; ?></div>
+                                    <a href="<?= base_url('admin/skripsi_psik'); ?>" class="badge badge-success">Lihat</a>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -53,6 +55,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
                                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?= $jumlah_kesmas; ?></div>
+                                            <a href="<?= base_url('admin/skripsi_kesmas'); ?>" class="badge badge-info">Lihat</a>
                                         </div>
                                     </div>
                                 </div>
@@ -72,6 +75,7 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Skripsi Belum Di Label</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    <a href="<?= base_url('admin/skripsilabel'); ?>" class="badge badge-warning">Lihat</a>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-comments fa-2x text-gray-300"></i>

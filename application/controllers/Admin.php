@@ -150,4 +150,27 @@ class Admin extends CI_Controller
             redirect('admin/skripsi_kesmas');
         }
     }
+
+    public function CetakLabel()
+    {
+        $data['title'] = 'Skripsi Kesmas';
+        $data['skripsi'] = $this->Admin_model->DataSkripsi();
+        $data['nama'] = $this->Admin_model->GetDataNama();
+        $data['judul'] = $this->Admin_model->GetDataJudul();
+        $this->load->view('admin/cetak-label', $data);
+        $this->Admin_model->UpdateStatusCetak();
+    }
+
+    public function SkripsiLabel()
+    {
+        $data['title'] = 'Data Skripsi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['skripsi_label'] = $this->Admin_model->getSkripsiLabel();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('admin/skripsi-label', $data);
+        $this->load->view('templates/footer');
+    }
 }

@@ -13,6 +13,38 @@ class Admin_model extends CI_Model
         return $this->db->get_where('data_skripsi', ['prodi' => 'KESMAS'])->result_array();
     }
 
+    public function getSkripsiLabel()
+    {
+        return $this->db->get_where('data_skripsi', ['cetak_status' => 0])->result_array();
+    }
+
+    public function UpdateStatusCetak()
+    {
+        $this->db->where(['cetak_status' => 0]);
+        $this->db->set('cetak_status', 1);
+        $this->db->update('data_skripsi');
+    }
+
+    public function GetDataNama()
+    {
+        $QueryNama = " SELECT RIGHT (nama, 3) FROM data_skripsi";
+        $resultNama = $this->db->query($QueryNama)->result_array();
+
+        return $resultNama;
+    }
+
+    public function GetDataJudul()
+    {
+        $QueryJudul = " SELECT LEFT (judul, 1) FROM data_skripsi";
+        $resultJudul = $this->db->query($QueryJudul)->result_array();
+        return $resultJudul;
+    }
+
+    public function DataSkripsi()
+    {
+        return $this->db->get_where('data_skripsi', ['cetak_status' => 1])->result_array();
+    }
+
     public function KesmasCount()
     {
         $data = $this->getSkripsiKesmas();
