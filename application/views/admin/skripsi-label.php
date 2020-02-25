@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="text-right">
-        <a href="<?= base_url('admin/cetaklabel'); ?>" onclick="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Label</a>
+        <a href="<?= base_url('admin/cetaklabel'); ?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Label</a>
     </div>
 
     <div class="row">

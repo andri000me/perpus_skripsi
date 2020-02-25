@@ -13,7 +13,7 @@
 
     <div class="row">
         <?php foreach ($skripsi as $s) : ?>
-            <div class="col-lg-2 text-center" id="kotak" style="border: thin solid black">
+            <div class="col-lg-2 text-center">
                 <tr><b>PERPUSTAKAAN</b></tr><br>
                 <tr><b>STIK-IJ</b></tr><br>
                 <tr><b><?= $s['id']; ?></b></tr></br>
@@ -27,10 +27,11 @@
 
 </html>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <!-- fungsi untuk print(cetak) den baganti icon -->
 <script>
-    window.print();
+    // window.print();
 
     function change_favicon(img) {
         var favicon = document.querySelector('link[rel="shortcut icon"]');
