@@ -1,4 +1,9 @@
    <!-- Sidebar -->
+   <style type="css">
+       .sidebar{
+       background-color: gray;
+       }
+   </style>
    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
        <!-- Sidebar - Brand -->
@@ -6,7 +11,7 @@
            <div class="sidebar-brand-icon rotate-n-15">
                <i class="fas fa-code"></i>
            </div>
-           <div class="sidebar-brand-text mx-3">CI Admin </div>
+           <div class="sidebar-brand-text mx-3">PERPUSTAKAAN STIK-IJ - PALU </div>
        </a>
 
        <!-- Divider -->
