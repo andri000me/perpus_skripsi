@@ -18,7 +18,13 @@
                 <div class="col-lg-2 text-center" style="border: thin solid black" id="konten">
                     <tr><b>PERPUSTAKAAN</b></tr><br>
                     <tr><b>STIK-IJ</b></tr><br>
-                    <tr><b><?= $s['id']; ?></b></tr></br>
+                    <?php if (strlen($s['id']) >= 3) : ?>
+                        <tr><b><?= $s['id']; ?></b></tr></br>
+                    <?php elseif (strlen($s['id']) == 2) : ?>
+                        <tr><b>0<?= $s['id']; ?></b></tr></br>
+                    <?php elseif (strlen($s['id']) == 1) : ?>
+                        <tr><b>00<?= $s['id']; ?></b></tr></br>
+                    <?php endif; ?>
                     <tr><b><?= $s['nama']; ?></b></tr></br>
                     <tr><b><?= $s['judul']; ?></b></tr></br>
                 </div>
@@ -50,4 +56,24 @@
         });
         return false;
     }
+</script>
+
+<!-- fungsi untuk print(cetak) den baganti icon -->
+<script>
+    function change_favicon(img) {
+        var favicon = document.querySelector('link[rel="shortcut icon"]');
+
+        if (!favicon) {
+            favicon = document.createElement('link');
+            favicon.setAttribute('rel', 'shortcut icon');
+            var head = document.querySelector('head');
+            head.appendChild(favicon);
+        }
+
+
+        favicon.setAttribute('type', 'image/png');
+        favicon.setAttribute('href', img);
+    }
+
+    change_favicon('<?= base_url('assets/img/print.png'); ?>');
 </script>

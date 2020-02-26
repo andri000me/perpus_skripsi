@@ -45,6 +45,13 @@ class Admin_model extends CI_Model
         return $this->db->get_where('data_skripsi', ['cetak_status' => 1])->result_array();
     }
 
+    public function Data_()
+    {
+        $QueryNama = " SELECT id,  RIGHT (nama, 3) AS nama, LEFT (judul, 1) AS judul FROM data_skripsi WHERE `cetak_status` = 1 ";
+        $result = $this->db->query($QueryNama)->result_array();
+        return $result;
+    }
+
     public function KesmasCount()
     {
         $data = $this->getSkripsiKesmas();

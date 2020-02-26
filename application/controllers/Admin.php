@@ -157,17 +157,9 @@ class Admin extends CI_Controller
 
     public function CetakLabel()
     {
-        $data['skripsi'] = $this->Admin_model->DataSkripsi();
-        $data['nama'] = $this->Admin_model->GetDataNama();
-        $data['judul'] = $this->Admin_model->GetDataJudul();
-
-        // $this->pdf->setPaper('A4', 'potrait');
-        // $this->pdf->filename = "laporan-petanikode.pdf";
-        // $this->pdf->load_view('admin/cetak-label', $data);
+        $data['skripsi'] = $this->Admin_model->Data_();
         $this->load->view('admin/cetak-label', $data);
-
-
-        // $this->Admin_model->UpdateStatusCetak();
+        $this->Admin_model->UpdateStatusCetak();
     }
 
     public function SkripsiLabel()
