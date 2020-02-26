@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\This;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
@@ -8,6 +11,7 @@ class Admin extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->model('Admin_model');
+        $this->load->library('Pdf');
     }
 
     public function index()
@@ -153,11 +157,16 @@ class Admin extends CI_Controller
 
     public function CetakLabel()
     {
-        $data['title'] = 'Skripsi Kesmas';
         $data['skripsi'] = $this->Admin_model->DataSkripsi();
         $data['nama'] = $this->Admin_model->GetDataNama();
         $data['judul'] = $this->Admin_model->GetDataJudul();
+
+        // $this->pdf->setPaper('A4', 'potrait');
+        // $this->pdf->filename = "laporan-petanikode.pdf";
+        // $this->pdf->load_view('admin/cetak-label', $data);
         $this->load->view('admin/cetak-label', $data);
+
+
         // $this->Admin_model->UpdateStatusCetak();
     }
 
