@@ -1,9 +1,4 @@
    <!-- Sidebar -->
-   <style type="css">
-       .sidebar{
-       background-color: gray;
-       }
-   </style>
    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
        <!-- Sidebar - Brand -->
