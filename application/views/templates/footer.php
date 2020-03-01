@@ -61,6 +61,8 @@
       <!-- script untuk SweetAlert -->
       <script src="<?= base_url('assets/') ?>js/script.js"></script>
 
+      <script src="<?= base_url('assets/') ?>js/ubah.js"></script>
+
       <script>
           //   jquery untuk manipulasi input gambar
           $('.custom-file-input').on('change', function() {

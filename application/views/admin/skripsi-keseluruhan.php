@@ -2,10 +2,6 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <!-- <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1> -->
-    <div class="text-right">
-        <a href="<?= base_url('admin/cetaklabelpsik'); ?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Label</a>
-    </div>
 
     <div class="row">
         <div class="col-lg">
@@ -17,13 +13,12 @@
             <?php endif; ?>
 
             <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
-
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newRoleMenuModal">Tambah</a>
+            <a href="" class="btn btn-primary mb-0 tambah" data-toggle="modal" data-target="#newRoleMenuModal">Tambah</a>
 
             <!-- DataTales Example -->
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-4 mt-3">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Skripsi PSIK</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Skripsi Keseluruhan</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -44,20 +39,20 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
-                                <?php foreach ($skripsi_psik as $sp) : ?>
+                                <?php foreach ($skripsi_keseluruhan as $sl) : ?>
                                     <tr>
                                         <th scope="row"><?= $i ?></th>
-                                        <td><?= $sp['npm']; ?></td>
-                                        <td><?= $sp['nama']; ?></td>
-                                        <td><?= $sp['judul']; ?></td>
-                                        <td align="center"><?= $sp['jumlah']; ?></td>
-                                        <td><?= $sp['prodi']; ?></td>
-                                        <td><?= $sp['tahun']; ?></td>
-                                        <td><?= $sp['pembimbing_1']; ?></td>
-                                        <td><?= $sp['pembimbing_2']; ?></td>
+                                        <td><?= $sl['npm']; ?></td>
+                                        <td><?= $sl['nama']; ?></td>
+                                        <td><?= $sl['judul']; ?></td>
+                                        <td align="center"><?= $sl['jumlah']; ?></td>
+                                        <td><?= $sl['prodi']; ?></td>
+                                        <td><?= $sl['tahun']; ?></td>
+                                        <td><?= $sl['pembimbing_1']; ?></td>
+                                        <td><?= $sl['pembimbing_2']; ?></td>
                                         <td align="center">
-                                            <a href="" class="badge badge-success edit">edit</a>
-                                            <a href="<?= base_url('admin/hapusdata/') ?><?= $sp['id']; ?>" class="badge badge-danger hapus">hapus</a>
+                                            <a href="" class="badge badge-success edit" data-toggle="modal" data-target="#newRoleMenuModal" data-id="<?= $sl['id']; ?>">edit</a>
+                                            <a href="<?= base_url('admin/hapusdata/') ?><?= $sl['id']; ?>" class="badge badge-danger hapus">hapus</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
@@ -87,7 +82,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="<?= base_url('admin/skripsi_psik'); ?>" method="post">
+            <form action="<?= base_url('admin/skripsi_keseluruhan'); ?>" method="post">
+                <input type="hidden" name="id" id="id">
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="text" class="form-control" id="npm" name="npm" placeholder="NPM">

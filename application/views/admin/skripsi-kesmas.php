@@ -2,7 +2,9 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <div class="text-right">
+        <a href="<?= base_url('admin/cetaklabelkesmas'); ?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Cetak Label</a>
+    </div>
 
     <div class="row">
         <div class="col-lg">

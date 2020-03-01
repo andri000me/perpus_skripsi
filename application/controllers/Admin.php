@@ -21,6 +21,7 @@ class Admin extends CI_Controller
         $data['jumlah_kesmas'] = $this->Admin_model->KesmasCount();
         $data['jumlah_psik'] = $this->Admin_model->PsikCount();
         $data['jumlah_keseluruhan'] = $this->Admin_model->AllCount();
+        $data['jumlah_belum'] = $this->Admin_model->AllCount_Belum();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -162,6 +163,20 @@ class Admin extends CI_Controller
         $this->Admin_model->UpdateStatusCetak();
     }
 
+    public function CetakLabelKesmas()
+    {
+        $data['skripsi'] = $this->Admin_model->Data_Kesmas();
+        $this->load->view('admin/cetak-label-kesmas', $data);
+        $this->Admin_model->UpdateStatusCetak_Kesmas();
+    }
+
+    public function CetakLabelPSIK()
+    {
+        $data['skripsi'] = $this->Admin_model->Data_PSIK();
+        $this->load->view('admin/cetak-label-psik', $data);
+        $this->Admin_model->UpdateStatusCetak_PSIK();
+    }
+
     public function SkripsiLabel()
     {
         $data['title'] = 'Data Skripsi';
@@ -173,5 +188,47 @@ class Admin extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('admin/skripsi-label', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function Skripsi_Keseluruhan()
+    {
+        $data['title'] = 'Data Skripsi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['skripsi_keseluruhan'] = $this->Admin_model->getSkripsiKeseluruhan();
+
+        $this->form_validation->set_rules('npm', 'NPM', 'required|is_unique[data_skripsi.npm]', [
+            'is_unique' => 'Data dengan NPM <strong><u> ' . ($this->input->post('npm')) . '</strong></u> sudah ada'
+        ]);
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('judul', 'Judul', 'required');
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
+        $this->form_validation->set_rules('prodi', 'Prodi', 'required');
+        $this->form_validation->set_rules('tahun', 'Tahun', 'required');
+        $this->form_validation->set_rules('pembimbing1', 'Pembimbing 1', 'required');
+        $this->form_validation->set_rules('pembimbing2', 'Pembimbing 2', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/skripsi-keseluruhan', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Admin_model->InputData();
+            $this->session->set_flashdata('message', ' <b> ditambahkan! </b>');
+            redirect('admin/skripsi_keseluruhan');
+        }
+    }
+
+    public function getSkripsiById()
+    {
+        echo json_encode($this->Admin_model->getSkripsiById($_POST['id']));
+    }
+
+    public function Ubah()
+    {
+        $this->Admin_model->edit($_POST['id']);
+        $this->session->set_flashdata('message', '<strong>Diubah! </strong>');
+        redirect('admin/skripsi_keseluruhan');
     }
 }
